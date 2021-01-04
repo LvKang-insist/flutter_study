@@ -19,87 +19,69 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// 首页，
+/// 首页，StatefulWidget:一个有状态的组件，StatelessWidget无状态的组件
+/// StatefulWidget 至少由两个类组成，一个 StatefulWidget类，一个 State 类
+/// StateFulWidget 类本身是不变的,但是 State 类中持有的状态在 widget 生命周期中可能发生变化
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
+  //标题
   final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+/// _MyHomePageState 类是 MyHomePage 对应的状态类
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  ///点击按钮时，会调用此函数，setState 接受一个 Function
+  ///setState 方法会先执行自增_counter，然后通知 Flutter 框架，有状态发生改变
+  ///Flutter 框架收到通知后，会执行 build 根据新的状态重新构建界面，Flutter 做了优化，
+  ///使重新执行变得很快，所以你可以重新构建任何一需要更新的东西，而无需分别修改 widget
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
 
+  /// 构建 UI 的逻辑在 build 方法中，当 MyHomePage 第一次创建时，_MyHomePageState类
+  /// 会被创建，创建完成后就会调用 build 方法来构建 widget 树，最终将 widget 树渲染
+  /// 到设备屏幕上
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    /// Scaffold 是 Material 库提供的脚手架
+    /// 默认提供了 导航，标题，主屏幕的 widget 树的 body 属性
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        //设置title
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+        /// center 可以将子组件对齐到屏幕中心，此例中是 column
+        /// column 作用是将所有子沿屏幕垂直方向依次排列
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              '你已经按了很多次按钮:', //固定文本
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              '$_counter', //文本
+              style: Theme.of(context).textTheme.headline4, //主题
             ),
           ],
         ),
       ),
+
+      /// 右下角带 + 的悬浮按钮，onPressed 接受一个函数，会在点击后进行调用
+      /// tooltip：长按提示问题
+      /// 图标
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        tooltip: '增加',
+        child: Icon(Icons.add, size: 20.toDouble()),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
