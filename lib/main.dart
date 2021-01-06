@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'RouteStudy.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -30,6 +32,24 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
+}
+
+/// StatelessWidget 无状态组件
+class NewRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("FlutterStudy"),
+      ),
+      body: Center(
+        child: Text(
+          "This is new route",
+          style: Theme.of(context).textTheme.headline3,
+        ),
+      ),
+    );
+  }
 }
 
 /// _MyHomePageState 类是 MyHomePage 对应的状态类
@@ -65,12 +85,19 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '你已经按了很多次按钮:', //固定文本
-            ),
-            Text(
               '$_counter', //文本
               style: Theme.of(context).textTheme.headline4, //主题
             ),
+            FlatButton(
+              child: Text("点击跳转"),
+              textColor: Colors.red,
+              onPressed: () {
+                //导航到新的路由
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return RouterTestRoute();
+                }));
+              },
+            )
           ],
         ),
       ),
