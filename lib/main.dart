@@ -1,3 +1,4 @@
+// ignore: avoid_web_libraries_in_flutter
 import 'package:flutter/material.dart';
 
 import 'RouteStudy.dart';
@@ -15,8 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
+      routes: {
+        "new_page": (context) => NewRoute(),
+        "router_test": (context) => RouterTestRoute(),
+        "home": (context) => MyHomePage(title: "Flutter Study")
+      },
       //应用首页路由
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Study'),
     );
   }
 }
@@ -42,11 +48,16 @@ class NewRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text("FlutterStudy"),
       ),
-      body: Center(
-        child: Text(
-          "This is new route",
-          style: Theme.of(context).textTheme.headline3,
-        ),
+      body: Column(
+        children: [
+          Text("This is new route",
+              style: Theme.of(context).textTheme.headline3),
+          TextButton(
+              child: Text("自定义 Button"),
+              onPressed: () {
+                Navigator.pushNamed(context, "router_test");
+              })
+        ],
       ),
     );
   }
@@ -94,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 //导航到新的路由
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return RouterTestRoute();
+                  return NewRoute();
                 }));
               },
             )

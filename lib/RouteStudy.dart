@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
+
 class TipRoute extends StatelessWidget {
   TipRoute({Key key, this.text}) : super(key: key);
 
@@ -32,18 +34,16 @@ class TipRoute extends StatelessWidget {
 class RouterTestRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: RaisedButton(
-        onPressed: () async {
-          var result = await Navigator.push(context,
-              MaterialPageRoute(builder: (context) {
-            return TipRoute(
-              text: "我是参数"
-            );
-          }));
-          print("路由返回值 $result");
-        },
-        child: Text("打开提示页面"),
+    return Scaffold(
+      body: Center(
+        child: RaisedButton(
+          onPressed: () async {
+            await Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return TipRoute(text: "我是参数");
+            })).then((value) => print("路由返回值 $value"));
+          },
+          child: Text("打开提示页面"),
+        ),
       ),
     );
   }
