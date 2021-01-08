@@ -13,6 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //app name
       title: 'FlutterStudy',
+      // ignore: missing_return
+      onGenerateRoute: (settings) {
+
+      },
+      navigatorObservers: [
+        NavigatorObserver()
+      ],
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
@@ -44,6 +51,8 @@ class MyHomePage extends StatefulWidget {
 class NewRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("FlutterStudy"),
@@ -53,7 +62,7 @@ class NewRoute extends StatelessWidget {
           Text("This is new route",
               style: Theme.of(context).textTheme.headline3),
           TextButton(
-              child: Text("自定义 Button"),
+              child: Text(args),
               onPressed: () {
                 Navigator.pushNamed(context, "router_test");
               })
@@ -104,9 +113,11 @@ class _MyHomePageState extends State<MyHomePage> {
               textColor: Colors.red,
               onPressed: () {
                 //导航到新的路由
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return NewRoute();
-                }));
+                // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                //   return NewRoute();
+                // }
+                Navigator.pushNamed(context, "new_page",
+                    arguments: "Hello World");
               },
             )
           ],
