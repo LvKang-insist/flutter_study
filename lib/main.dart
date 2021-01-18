@@ -1,5 +1,7 @@
 // ignore: avoid_web_libraries_in_flutter
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_study/assets/AssetsLoad.dart';
 
 import 'RouteStudy.dart';
 
@@ -14,12 +16,8 @@ class MyApp extends StatelessWidget {
       //app name
       title: 'FlutterStudy',
       // ignore: missing_return
-      onGenerateRoute: (settings) {
-
-      },
-      navigatorObservers: [
-        NavigatorObserver()
-      ],
+      onGenerateRoute: (settings) {},
+      navigatorObservers: [NavigatorObserver()],
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
@@ -31,6 +29,17 @@ class MyApp extends StatelessWidget {
       //应用首页路由
       home: MyHomePage(title: 'Flutter Study'),
     );
+  }
+}
+
+class RandomWordsWidget extends StatelessWidget {
+  final wordPair = new WordPair.random();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: new Text(wordPair.toString()));
   }
 }
 
@@ -109,17 +118,20 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4, //主题
             ),
             FlatButton(
-              child: Text("点击跳转"),
-              textColor: Colors.red,
-              onPressed: () {
-                //导航到新的路由
-                // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                //   return NewRoute();
-                // }
-                Navigator.pushNamed(context, "new_page",
-                    arguments: "Hello World");
-              },
-            )
+                child: Text("点击跳转"),
+                textColor: Colors.red,
+                onPressed: () {
+                  //导航到新的路由
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  //   return NewRoute();
+                  // }));
+                  // Navigator.pushNamed(context, "new_page",
+                  //     arguments: "Hello World");
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return AssetsLoad();
+                  }));
+                }),
+            RandomWordsWidget()
           ],
         ),
       ),

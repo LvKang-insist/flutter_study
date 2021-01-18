@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-
 class TipRoute extends StatelessWidget {
   TipRoute({Key key, this.text}) : super(key: key);
 
@@ -23,6 +21,15 @@ class TipRoute extends StatelessWidget {
                 RaisedButton(
                   onPressed: () => Navigator.pop(context, "我是返回值"),
                   child: Text("返回"),
+                ),
+                Container(
+                  child: Image.asset(
+                    "images/icon.png",
+                    fit: BoxFit.cover,
+                  ),
+                  height: 300,
+                  width: 300,
+                  color: Colors.yellow,
                 )
               ],
             ),
