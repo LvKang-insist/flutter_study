@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/assets/AssetsLoad.dart';
 
 import 'RouteStudy.dart';
+import 'exception/ExeceptionTest.dart';
 
 void main() {
   runApp(MyApp());
@@ -128,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   // Navigator.pushNamed(context, "new_page",
                   //     arguments: "Hello World");
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return AssetsLoad();
+                    return ExceptionTest();
                   }));
                 }),
             RandomWordsWidget()
