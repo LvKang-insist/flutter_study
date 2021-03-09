@@ -126,11 +126,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   // Navigator.push(context, MaterialPageRoute(builder: (context) {
                   //   return NewRoute();
                   // }));
-                  // Navigator.pushNamed(context, "new_page",
-                  //     arguments: "Hello World");
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ExceptionTest();
-                  }));
+                  Navigator.pushNamed(context, "new_page",
+                      arguments: "Hello World");
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  //   return ExceptionTest();
+                  // }));
                 }),
             RandomWordsWidget()
           ],
