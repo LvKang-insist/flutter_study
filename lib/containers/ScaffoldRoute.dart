@@ -7,6 +7,8 @@ import 'package:flutter_study/scroll/GridViewTest.dart';
 import 'package:flutter_study/scroll/HomeTab.dart';
 import 'package:flutter_study/scroll/InfiniteGridView.dart';
 import 'package:flutter_study/scroll/ListTest.dart';
+import 'package:flutter_study/state/TapBoxA.dart';
+import 'package:flutter_study/state/TapBoxC.dart';
 
 import 'MyClipper.dart';
 
@@ -99,45 +101,47 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
               borderRadius: BorderRadius.circular(5),
               child: avatar,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //Align：调整子组件的位置，
-                Align(
-                  alignment: Alignment.topLeft,
-                  widthFactor: .5, //自身的 = 子组件 x widthFactor
-                  child: avatar,
-                ),
-                Text(
-                  "Hello World",
-                  style: TextStyle(color: Colors.green),
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // 将溢出的部分剪裁
-                ClipRect(
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    widthFactor: .5,
-                    child: avatar,
-                  ),
-                ),
-                Text(
-                  "Hello World",
-                  style: TextStyle(color: Colors.green),
-                )
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     //Align：调整子组件的位置，
+            //     Align(
+            //       alignment: Alignment.topLeft,
+            //       widthFactor: .5, //自身的 = 子组件 x widthFactor
+            //       child: avatar,
+            //     ),
+            //     Text(
+            //       "Hello World",
+            //       style: TextStyle(color: Colors.green),
+            //     )
+            //   ],
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     // 将溢出的部分剪裁
+            //     ClipRect(
+            //       child: Align(
+            //         alignment: Alignment.topLeft,
+            //         widthFactor: .5,
+            //         child: avatar,
+            //       ),
+            //     ),
+            //     Text(
+            //       "Hello World",
+            //       style: TextStyle(color: Colors.green),
+            //     )
+            //   ],
+            // ),
             DecoratedBox(
               decoration: BoxDecoration(color: Colors.red),
               child: ClipRect(
                 child: avatar,
                 clipper: MyClipper(),
               ),
-            )
+            ),
+            SizedBox(height: 20),
+            ParentWidget()
           ],
         ),
       ),
