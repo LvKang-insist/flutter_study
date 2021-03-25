@@ -1,7 +1,10 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_study/%20share_provider/test.dart';
 import 'package:flutter_study/containers/DrawerTest.dart';
+import 'package:flutter_study/http/HttpTestWidget.dart';
+import 'package:flutter_study/provider/test_inherited_share_widget.dart';
 import 'package:flutter_study/scroll/CustomScrollViewTest.dart';
 import 'package:flutter_study/scroll/GridViewTest.dart';
 import 'package:flutter_study/scroll/HomeTab.dart';
@@ -45,7 +48,10 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
         children: [
           home(),
           list(),
-          CustomScrollViewTest()
+          // CustomScrollViewTest()
+          // TestInheritedWidget()
+          // ProviderTest()
+          HttpTestWidget()
         ],
       ),
       bottomNavigationBar: BottomAppBar(
