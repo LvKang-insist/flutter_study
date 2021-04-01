@@ -3,14 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/%20share_provider/test.dart';
 import 'package:flutter_study/containers/DrawerTest.dart';
-import 'package:flutter_study/http/HttpTestWidget.dart';
-import 'package:flutter_study/provider/test_inherited_share_widget.dart';
-import 'package:flutter_study/scroll/CustomScrollViewTest.dart';
-import 'package:flutter_study/scroll/GridViewTest.dart';
+import 'package:flutter_study/event/event_test.dart';
 import 'package:flutter_study/scroll/HomeTab.dart';
 import 'package:flutter_study/scroll/InfiniteGridView.dart';
 import 'package:flutter_study/scroll/ListTest.dart';
-import 'package:flutter_study/state/TapBoxA.dart';
 import 'package:flutter_study/state/TapBoxC.dart';
 
 import 'MyClipper.dart';
@@ -51,7 +47,8 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
           // CustomScrollViewTest()
           // TestInheritedWidget()
           // ProviderTest()
-          HttpTestWidget()
+          // HttpTestWidget()
+          EventTest()
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -76,8 +73,11 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          BotToast.showText(text: "中间");
-          _pageController.jumpToPage(1);
+          // BotToast.showText(text: "中间");
+          // _pageController.jumpToPage(1);
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return EventTest();
+          }));
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
