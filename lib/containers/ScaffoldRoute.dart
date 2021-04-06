@@ -2,8 +2,10 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/%20share_provider/test.dart';
+import 'package:flutter_study/anim/animation_test.dart';
 import 'package:flutter_study/containers/DrawerTest.dart';
 import 'package:flutter_study/event/event_test.dart';
+import 'package:flutter_study/notification/notification_test.dart';
 import 'package:flutter_study/scroll/HomeTab.dart';
 import 'package:flutter_study/scroll/InfiniteGridView.dart';
 import 'package:flutter_study/scroll/ListTest.dart';
@@ -48,7 +50,9 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
           // TestInheritedWidget()
           // ProviderTest()
           // HttpTestWidget()
-          EventTest()
+          // EventTest()
+          // NotificationTest()
+          AnimationTest()
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -74,10 +78,10 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
         child: Icon(Icons.add),
         onPressed: () {
           // BotToast.showText(text: "中间");
-          // _pageController.jumpToPage(1);
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return EventTest();
-          }));
+          _pageController.jumpToPage(1);
+          // Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //   return EventTest();
+          // }));
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
