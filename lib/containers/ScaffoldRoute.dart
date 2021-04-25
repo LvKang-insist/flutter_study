@@ -2,7 +2,10 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/%20share_provider/test.dart';
+import 'package:flutter_study/anim/animated_swticher_test.dart';
 import 'package:flutter_study/anim/animation_test.dart';
+import 'package:flutter_study/anim/hero_animation_test.dart';
+import 'package:flutter_study/anim/stagger_test.dart';
 import 'package:flutter_study/containers/DrawerTest.dart';
 import 'package:flutter_study/event/event_test.dart';
 import 'package:flutter_study/notification/notification_test.dart';
@@ -52,7 +55,10 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
           // HttpTestWidget()
           // EventTest()
           // NotificationTest()
-          AnimationTest()
+          // AnimationTest()
+          // HeroAnimationTestA()
+          // StaggerTest()
+          AnimatedSwitcherTest()
         ],
       ),
       bottomNavigationBar: BottomAppBar(
